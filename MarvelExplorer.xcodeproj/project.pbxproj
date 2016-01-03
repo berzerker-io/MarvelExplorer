@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		45587031679BC90569B838C0 /* Pods_MarvelExplorer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6B8C89155524210D18010E /* Pods_MarvelExplorer.framework */; };
+		D849E1E11C3983590074B036 /* marvel.json in Resources */ = {isa = PBXBuildFile; fileRef = D849E1E01C3983590074B036 /* marvel.json */; };
+		D8EB458D1C39878E0061F153 /* CoreDataCharacter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB458B1C39878E0061F153 /* CoreDataCharacter+CoreDataProperties.swift */; };
+		D8EB458E1C39878E0061F153 /* CoreDataCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB458C1C39878E0061F153 /* CoreDataCharacter.swift */; };
+		D8EB45901C3988080061F153 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB458F1C3988080061F153 /* Stack.swift */; };
+		D8EB45921C398FC40061F153 /* RealmCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB45911C398FC40061F153 /* RealmCharacter.swift */; };
 		D8F537B81C389E30008715A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F537B71C389E30008715A0 /* AppDelegate.swift */; };
 		D8F537BA1C389E30008715A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F537B91C389E30008715A0 /* ViewController.swift */; };
 		D8F537BD1C389E30008715A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F537BB1C389E30008715A0 /* Main.storyboard */; };
@@ -37,6 +42,11 @@
 
 /* Begin PBXFileReference section */
 		AA6B8C89155524210D18010E /* Pods_MarvelExplorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelExplorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D849E1E01C3983590074B036 /* marvel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = marvel.json; sourceTree = "<group>"; };
+		D8EB458B1C39878E0061F153 /* CoreDataCharacter+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreDataCharacter+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D8EB458C1C39878E0061F153 /* CoreDataCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataCharacter.swift; sourceTree = "<group>"; };
+		D8EB458F1C3988080061F153 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		D8EB45911C398FC40061F153 /* RealmCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmCharacter.swift; sourceTree = "<group>"; };
 		D8F537B41C389E2F008715A0 /* MarvelExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F537B71C389E30008715A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8F537B91C389E30008715A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +108,41 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D849E1E21C39835E0074B036 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				D849E1E01C3983590074B036 /* marvel.json */,
+			);
+			name = JSON;
+			sourceTree = "<group>";
+		};
+		D8EB45881C3987630061F153 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D8EB45891C3987680061F153 /* Core Data */,
+				D8EB458A1C39876D0061F153 /* Realm */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D8EB45891C3987680061F153 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				D8EB458C1C39878E0061F153 /* CoreDataCharacter.swift */,
+				D8EB458B1C39878E0061F153 /* CoreDataCharacter+CoreDataProperties.swift */,
+				D8EB458F1C3988080061F153 /* Stack.swift */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		D8EB458A1C39876D0061F153 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				D8EB45911C398FC40061F153 /* RealmCharacter.swift */,
+			);
+			name = Realm;
+			sourceTree = "<group>";
+		};
 		D8F537AB1C389E2F008715A0 = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				D8F537C11C389E30008715A0 /* Assets.xcassets */,
+				D849E1E21C39835E0074B036 /* JSON */,
 				D8F537C31C389E30008715A0 /* LaunchScreen.storyboard */,
 				D8F537BB1C389E30008715A0 /* Main.storyboard */,
 				D8F537BE1C389E30008715A0 /* MarvelExplorer.xcdatamodeld */,
@@ -163,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				D8F537B71C389E30008715A0 /* AppDelegate.swift */,
+				D8EB45881C3987630061F153 /* Model */,
 				D8F537EB1C38A117008715A0 /* View Controllers */,
 			);
 			name = Source;
@@ -293,6 +340,7 @@
 			files = (
 				D8F537C51C389E30008715A0 /* LaunchScreen.storyboard in Resources */,
 				D8F537C21C389E30008715A0 /* Assets.xcassets in Resources */,
+				D849E1E11C3983590074B036 /* marvel.json in Resources */,
 				D8F537BD1C389E30008715A0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,8 +414,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8EB45921C398FC40061F153 /* RealmCharacter.swift in Sources */,
+				D8EB458D1C39878E0061F153 /* CoreDataCharacter+CoreDataProperties.swift in Sources */,
 				D8F537BA1C389E30008715A0 /* ViewController.swift in Sources */,
+				D8EB458E1C39878E0061F153 /* CoreDataCharacter.swift in Sources */,
 				D8F537B81C389E30008715A0 /* AppDelegate.swift in Sources */,
+				D8EB45901C3988080061F153 /* Stack.swift in Sources */,
 				D8F537C01C389E30008715A0 /* MarvelExplorer.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
