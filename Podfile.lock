@@ -1,5 +1,4 @@
 PODS:
-  - Log (0.4)
   - Realm (0.98.7):
     - Realm/Headers (= 0.98.7)
   - Realm/Headers (0.98.7)
@@ -7,11 +6,9 @@ PODS:
     - Realm (= 0.98.7)
 
 DEPENDENCIES:
-  - Log
   - RealmSwift
 
 SPEC CHECKSUMS:
-  Log: 202ae5ea306f3a74440500434b9560db1c4b1f9e
   Realm: 46df2178359b6b57812e6cf957956febaba513a5
   RealmSwift: 3056e6d7ad30ed50dd866185a615fccea73db5f5
 

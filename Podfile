@@ -12,8 +12,7 @@ use_frameworks!
 
 target 'MarvelExplorer' do
 
-pod 'Log'
-pod 'RealmSwift'
+  pod 'RealmSwift'
 
 end
 
