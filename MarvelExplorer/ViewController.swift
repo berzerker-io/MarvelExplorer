@@ -7,13 +7,12 @@
 //
 
 import CoreData
-import Log
 import RealmSwift
 import UIKit
 
 class ViewController: UIViewController {
     
-    // MARK: - Properties
+    // MARK: Properties
     
     var json: [[String: AnyObject]]?
     
@@ -25,42 +24,42 @@ class ViewController: UIViewController {
         return dateFormatter
     }()
     
-    // MARK: - View Lifecycle
+    // MARK: Actions
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func buttonTapped(sender: UIButton) {
         do {
             json = try processJSON()
             if let json = self.json {
-                Log.trace("--------------------------------------------------")
+                print("--------------------------------------------------")
                 let coreDataWriteDelta = processCoreData(json)
                 let realmWriteDelta = processRealm(json)
-                Log.trace("")
-                Log.trace("\tResults\n")
-                Log.trace("\t\tCore Data: \(coreDataWriteDelta)")
-                Log.trace("\t\t-   Realm: \(realmWriteDelta)")
-                Log.trace("__________________________________________________")
-                Log.warning("\t\tTotal: \(coreDataWriteDelta - realmWriteDelta)")
-                Log.trace("--------------------------------------------------\n\n")
+                print("")
+                print("\tResults\n")
+                print("\t\tCore Data: \(coreDataWriteDelta)")
+                print("\t\t-   Realm: \(realmWriteDelta)")
+                print("__________________________________________________")
+                print("\t\tTotal: \(coreDataWriteDelta - realmWriteDelta)")
+                print("--------------------------------------------------\n\n")
                 
                 
-                Log.trace("--------------------------------------------------")
+                print("--------------------------------------------------")
                 let coreDataReadDelta = readCoreData()
                 let realmReadDelta = readRealm()
-                Log.trace("")
-                Log.trace("\tResults\n")
-                Log.trace("\t\tCore Data: \(coreDataReadDelta)")
-                Log.trace("\t\t-   Realm: \(realmReadDelta)")
-                Log.trace("__________________________________________________")
-                Log.warning("\t\tTotal: \(coreDataReadDelta - realmReadDelta)")
-                Log.trace("--------------------------------------------------\n\n")
+                print("")
+                print("\tResults\n")
+                print("\t\tCore Data: \(coreDataReadDelta)")
+                print("\t\t-   Realm: \(realmReadDelta)")
+                print("__________________________________________________")
+                print("\t\tTotal: \(coreDataReadDelta - realmReadDelta)")
+                print("--------------------------------------------------\n\n")
             }
         } catch let error as NSError {
-            Log.error("\(error.code) \(error.localizedDescription) \(error.userInfo)")
+            print("\(error.code) \(error.localizedDescription) \(error.userInfo)")
         }
     }
     
-    // MARK: - Data Processing
+    
+    // MARK: Data Processing
     
     private func processJSON() throws -> [[String: AnyObject]]? {
         guard let url = NSBundle.mainBundle().URLForResource("marvel", withExtension: "json") else { return nil }
@@ -70,8 +69,8 @@ class ViewController: UIViewController {
     }
     
     private func processCoreData(dictionaries: [[String: AnyObject]]) -> NSTimeInterval {
-        Log.trace("")
-        Log.trace("\tInserting into Core Data\n")
+        print("")
+        print("\tInserting into Core Data\n")
         let start = NSDate()
         let context = Stack.managedObjectContext
         for dictionary in dictionaries {
@@ -92,15 +91,15 @@ class ViewController: UIViewController {
         
         let end = NSDate()
         let delta = end.timeIntervalSinceDate(start)
-        Log.trace("\t\tStart:\t\(start.timeIntervalSince1970)")
-        Log.trace("\t\tEnd:\t\(end.timeIntervalSince1970)")
-        Log.info("\t\tDelta:\t\(delta)")
+        print("\t\tStart:\t\(start.timeIntervalSince1970)")
+        print("\t\tEnd:\t\t\(end.timeIntervalSince1970)")
+        print("\t\tDelta:\t\(delta)")
         return delta
     }
     
     private func processRealm(dictionaries: [[String: AnyObject]]) -> NSTimeInterval {
-        Log.trace("")
-        Log.trace("\tInserting into Realm\n")
+        print("")
+        print("\tInserting into Realm\n")
         let start = NSDate()
         do {
             let realm = try Realm()
@@ -124,54 +123,54 @@ class ViewController: UIViewController {
                 realm.add(characters)
             })
         } catch let error as NSError {
-            Log.error("\(error.code) \(error.localizedDescription) \(error.userInfo)")
+            print("\(error.code) \(error.localizedDescription) \(error.userInfo)")
         }
         
         let end = NSDate()
         let delta = end.timeIntervalSinceDate(start)
-        Log.trace("\t\tStart:\t\(start.timeIntervalSince1970)")
-        Log.trace("\t\tEnd:\t\(end.timeIntervalSince1970)")
-        Log.info("\t\tDelta:\t\(delta)")
+        print("\t\tStart:\t\(start.timeIntervalSince1970)")
+        print("\t\tEnd:\t\t\(end.timeIntervalSince1970)")
+        print("\t\tDelta:\t\(delta)")
         return delta
     }
     
     private func readCoreData() -> NSTimeInterval {
-        Log.trace("")
-        Log.trace("\tReading from Core Data\n")
+        print("")
+        print("\tReading from Core Data\n")
         let start = NSDate()
         var result: [CoreDataCharacter]?
         do {
             let request = NSFetchRequest(entityName: "Character")
             result = try Stack.managedObjectContext.executeFetchRequest(request) as? [CoreDataCharacter]
         } catch let error as NSError {
-            Log.error("\(error.code) \(error.localizedDescription) \(error.userInfo)")
+            print("\(error.code) \(error.localizedDescription) \(error.userInfo)")
         }
         let end = NSDate()
         let delta = end.timeIntervalSinceDate(start)
-        Log.trace("\t\tStart:\t\(start.timeIntervalSince1970)")
-        Log.trace("\t\tEnd:\t\(end.timeIntervalSince1970)")
-        Log.info("\t\tDelta:\t\(delta)")
-        Log.trace("\t\tCount:\t\(result!.count) records")
+        print("\t\tStart:\t\(start.timeIntervalSince1970)")
+        print("\t\tEnd:\t\t\(end.timeIntervalSince1970)")
+        print("\t\tDelta:\t\(delta)")
+        print("\t\tCount:\t\(result!.count) records")
         return delta
     }
     
     private func readRealm() -> NSTimeInterval {
-        Log.trace("")
-        Log.trace("\tReading from Realm\n")
+        print("")
+        print("\tReading from Realm\n")
         let start = NSDate()
         var result: Results<RealmCharacter>?
         do {
             result = try Realm().objects(RealmCharacter.self)
             
         } catch let error as NSError {
-            Log.error("\(error.code) \(error.localizedDescription) \(error.userInfo)")
+            print("\(error.code) \(error.localizedDescription) \(error.userInfo)")
         }
         let end = NSDate()
         let delta = end.timeIntervalSinceDate(start)
-        Log.trace("\t\tStart:\t\(start.timeIntervalSince1970)")
-        Log.trace("\t\tEnd:\t\(end.timeIntervalSince1970)")
-        Log.info("\t\tDelta:\t\(delta)")
-        Log.trace("\t\tCount:\t\(result!.count) records")
+        print("\t\tStart:\t\(start.timeIntervalSince1970)")
+        print("\t\tEnd:\t\t\(end.timeIntervalSince1970)")
+        print("\t\tDelta:\t\(delta)")
+        print("\t\tCount:\t\(result!.count) records")
         return delta
     }
 }
