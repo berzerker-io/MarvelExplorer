@@ -198,7 +198,7 @@ GEM
     produce (1.1.1)
       fastlane_core (>= 0.30.0, < 1.0.0)
       spaceship (>= 0.16.0)
-    rake (11.1.2)
+    rake (12.3.3)
     representable (2.3.0)
       uber (~> 0.0.7)
     retriable (2.1.0)
